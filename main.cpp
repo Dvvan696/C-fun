@@ -7,14 +7,14 @@
 
 using namespace std;
 
-void inputValue(string Title, bool* Value) // проверка на bool значение ( черт знает что введут)
+void inputValue(string Title, bool* Value) // ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  bool Г§Г­Г Г·ГҐГ­ГЁГҐ ( Г·ГҐГ°ГІ Г§Г­Г ГҐГІ Г·ГІГ® ГўГўГҐГ¤ГіГІ)
 {
     string value;
     bool x;
 
     do {
         cout << Title;
-        cin >> value;
+        getline(cin,value);
 
     } while (value != "0" && value != "1");
     if (value == "0")
@@ -29,7 +29,7 @@ void inputValue(string Title, bool* Value) // проверка на bool значение ( черт з
     *Value = x;
 }
 
-Sig EnterSig()  // для приема сигнала
+Sig EnterSig()  // Г¤Г«Гї ГЇГ°ГЁГҐГ¬Г  Г±ГЁГЈГ­Г Г«Г 
 {
     Sig x;
 
@@ -40,15 +40,12 @@ Sig EnterSig()  // для приема сигнала
     return x;
 }
 
-bool AnswerCheck(string qes, bool *out) // проверка на верность ввода
+bool AnswerCheck(string qes, bool *out) // ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГўГҐГ°Г­Г®Г±ГІГј ГўГўГ®Г¤Г 
 {
     
     string answer;
     cout << qes;
-    if (qes == "Do you want invert 1 block? Y/N  ")
-    {
-        cin.ignore();
-    }
+
     do {
         
         getline(cin, answer);
@@ -76,7 +73,7 @@ bool AnswerCheck(string qes, bool *out) // проверка на верность ввода
     } while (tolower(answer[0]) != 'y' || tolower(answer[0]) != 'n');
 }
 
-Blocks UserChanges(Blocks& pros) //замена блоков
+Blocks UserChanges(Blocks& pros) //Г§Г Г¬ГҐГ­Г  ГЎГ«Г®ГЄГ®Гў
 {
     AnswerCheck("Do you want invert 1 block? Y/N  ", &pros.or1);
     AnswerCheck("Do you want invert 2 block? Y/N  ", &pros.or2);
@@ -89,7 +86,7 @@ Blocks UserChanges(Blocks& pros) //замена блоков
     return pros;
 }
 
-Outs Process(Sig& x, Blocks& pros, Outs& ou) // логичские операции из схемы
+Outs Process(Sig& x, Blocks& pros, Outs& ou) // Г«Г®ГЈГЁГ·Г±ГЄГЁГҐ Г®ГЇГҐГ°Г Г¶ГЁГЁ ГЁГ§ Г±ГµГҐГ¬Г»
 {
     if (pros.or1 == 1) {
         ou.out1 = x.x1 + x.x2 + x.x3;
@@ -149,28 +146,28 @@ Outs Process(Sig& x, Blocks& pros, Outs& ou) // логичские операции из схемы
     return ou;
 }
 
-int main() // дом пуджа
+int main() // Г¤Г®Г¬ ГЇГіГ¤Г¦Г 
 {
     setlocale(LC_ALL, "Russian");
-    cout << "Выполнял работу: " << "Голышкин Павел Александрович\n";
-    cout << "Группа: " << "ИС-29\n";
-    cout << "Задание: "
-        << "По имеющейся логической схеме и выходным сигналам определить значения выходных сигналов. Предусмотреть возможность редактирования (инвертирование выходов отдельных логических элементов) схемы пользователем\n";
-    cout << "СХЕМА ПСЕВДО-ГРАФИКОЙ\n";
+    cout << "Г‚Г»ГЇГ®Г«Г­ГїГ« Г°Г ГЎГ®ГІГі: " << "ГѓГ®Г«Г»ГёГЄГЁГ­ ГЏГ ГўГҐГ« ГЂГ«ГҐГЄГ±Г Г­Г¤Г°Г®ГўГЁГ·\n";
+    cout << "ГѓГ°ГіГЇГЇГ : " << "Г€Г‘-29\n";
+    cout << "Г‡Г Г¤Г Г­ГЁГҐ: "
+        << "ГЏГ® ГЁГ¬ГҐГѕГ№ГҐГ©Г±Гї Г«Г®ГЈГЁГ·ГҐГ±ГЄГ®Г© Г±ГµГҐГ¬ГҐ ГЁ ГўГ»ГµГ®Г¤Г­Г»Г¬ Г±ГЁГЈГ­Г Г«Г Г¬ Г®ГЇГ°ГҐГ¤ГҐГ«ГЁГІГј Г§Г­Г Г·ГҐГ­ГЁГї ГўГ»ГµГ®Г¤Г­Г»Гµ Г±ГЁГЈГ­Г Г«Г®Гў. ГЏГ°ГҐГ¤ГіГ±Г¬Г®ГІГ°ГҐГІГј ГўГ®Г§Г¬Г®Г¦Г­Г®Г±ГІГј Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГї (ГЁГ­ГўГҐГ°ГІГЁГ°Г®ГўГ Г­ГЁГҐ ГўГ»ГµГ®Г¤Г®Гў Г®ГІГ¤ГҐГ«ГјГ­Г»Гµ Г«Г®ГЈГЁГ·ГҐГ±ГЄГЁГµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў) Г±ГµГҐГ¬Г» ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГҐГ¬\n";
+    cout << "Г‘Г•Г…ГЊГЂ ГЏГ‘Г…Г‚Г„ГЋ-ГѓГђГЂГ”Г€ГЉГЋГ‰\n";
     cout << "       ___     ___   _____ \n"
-            "x1--г-|1+|°----|4|---|   |-\n"
-            "    | |——|  г--| |   | 7 | \n"
-            "x2--|-|2+|°-!г-|_|  г|_+_| \n"
-            "    | |——|   | ___  !  |   \n"
-            "x3----|3+|°--!-|5|--!  |   \n"
-            "   |__________г|&|     |   \n"
+            "x1--ГЈ-|1+|В°----|4|---|   |-\n"
+            "    | |вЂ”вЂ”|  ГЈ--| |   | 7 | \n"
+            "x2--|-|2+|В°-!ГЈ-|_|  ГЈ|_+_| \n"
+            "    | |вЂ”вЂ”|   | ___  !  |   \n"
+            "x3----|3+|В°--!-|5|--!  |   \n"
+            "   |__________ГЈ|&|     |   \n"
             "   |          ___      |   \n"
             "   |----------|6|------!   \n"
             "              |&|          \n";
     Sig x;
     x = EnterSig();
-    Blocks pros; //логические блоки
-    Outs ou; //выходы
+    Blocks pros; //Г«Г®ГЈГЁГ·ГҐГ±ГЄГЁГҐ ГЎГ«Г®ГЄГЁ
+    Outs ou; //ГўГ»ГµГ®Г¤Г»
     UserChanges(pros);
 
     ou = Process(x, pros, ou);
@@ -178,6 +175,6 @@ int main() // дом пуджа
     for (int i = 0; i < 100; i++) {
         cout << "Calculating process ends on " << i << "%\n";
     }
-    cout << "Y=" << ou.out7;
+    cout << "Y=" << ou.out7<<endl;
     return 0;
 }
