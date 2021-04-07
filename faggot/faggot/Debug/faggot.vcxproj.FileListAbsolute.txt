@@ -1,0 +1,3 @@
+F:\c++ proj\faggot\faggot\Debug\faggot.vcxprojAssemblyReference.cache
+F:\c++ proj\faggot\faggot\Debug\faggot.MyForm.resources
+F:\c++ proj\faggot\faggot\Debug\faggot.vcxproj.GenerateResource.cache
